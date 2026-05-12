@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Majha Maharashtra</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fff7ec;
+            color: #4a2c2a;
+        }
+
+        header {
+            background: linear-gradient(to right, green, #f3a712);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 42px;
+        }
+
+        header p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        section {
+            padding: 40px 10%;
+            text-align: center;
+        }
+
+        section h2 {
+            color: #b23a48;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        
+
+        .gallery img {
+    width: 100%;
+    height: 220px;          /* FIXED HEIGHT */
+    object-fit: cover;     /* CROPS IMAGE NEATLY */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .content {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #4a2c2a;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>माझा Maharashtra</h1>
+    <p>Pride, Power & Tradition</p>
+</header>
+
+<section>
+    <h2>About Maharashtra</h2>
+    <p class="content">
+        Maharashtra is a land of brave history, rich culture, and modern spirit.
+        From forts of Shivaji Maharaj to vibrant festivals and folk arts,
+        Maharashtra beautifully blends tradition with progress.
+    </p>
+</section>
+
+<section>
+    <h2>Glimpses of Culture</h2>
+    <div class="gallery">
+        <img src="image/Screenshot 2026-01-05 210616.png" alt="Rajasthani Dance">
+        <img src="image/Screenshot 2026-01-05 210701.png" alt="Hawa Mahal">
+        <img src="image/Screenshot 2026-01-05 210536.png" alt="Camel Safari">
+        <img src="image/Screenshot 2026-01-05 210442.png" alt="Rajasthani Food">
+    </div>
+</section>
+
+<section>
+    <h2>Folk & Tradition</h2>
+    <p class="content">
+        Maharashtra’s folk and traditions reflect the spirit, bravery, and simplicity of its people. Folk arts like Lavani, Powada, and Tamasha express stories of valor, devotion, and everyday life through energetic dance and music. Festivals such as Ganesh Chaturthi, Gudi Padwa, and Wari are celebrated with deep faith and community bonding. Traditional attire, local crafts, and devotional songs together keep Maharashtra’s cultural heritage alive and vibrant across generations.
+    </p>
+</section>
+
+<footer>
+BY Group Number 14 
+  </footer>
+
+</body>
+</html>

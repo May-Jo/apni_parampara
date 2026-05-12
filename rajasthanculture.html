@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rangilo Rajasthan</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fff7ec;
+            color: #4a2c2a;
+        }
+
+        header {
+            background: linear-gradient(to right, #c44536, #f3a712);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 42px;
+        }
+
+        header p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        section {
+            padding: 40px 10%;
+            text-align: center;
+        }
+
+        section h2 {
+            color: #b23a48;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        
+
+        .gallery img {
+    width: 100%;
+    height: 220px;          /* FIXED HEIGHT */
+    object-fit: cover;     /* CROPS IMAGE NEATLY */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .content {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #4a2c2a;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>रंगीलो Rajasthan</h1>
+    <p>Land of Colors, Culture & Courage</p>
+</header>
+
+<section>
+    <h2>About Rajasthan</h2>
+    <p class="content">
+        Rajasthan is known for its royal heritage, vibrant traditions, colorful attire,
+        folk dances, majestic forts, and warm hospitality. Every festival, costume,
+        and song reflects the proud history of this desert land.
+    </p>
+</section>
+
+<section>
+    <h2>Glimpses of Culture</h2>
+    <div class="gallery">
+        <img src="image/pexel 3.jpg" alt="Rajasthani Dance">
+        <img src="image/Screenshot 2026-01-05 204429.png" alt="Hawa Mahal">
+        <img src="image/Screenshot 2026-01-05 204610.png" alt="Camel Safari">
+        <img src="image/Screenshot 2026-01-05 204741.png" alt="Rajasthani Food">
+    </div>
+</section>
+
+<section>
+    <h2>Folk & Tradition</h2>
+    <p class="content">
+        From the graceful Ghoomar dance to soulful folk music,
+        Rajasthan’s culture is deeply rooted in tradition.
+        Festivals like Teej, Gangaur, and Pushkar Fair add
+        life and color to the land.
+    </p>
+</section>
+
+<footer>
+BY Group Number 14 
+  </footer>
+
+</body>
+</html>

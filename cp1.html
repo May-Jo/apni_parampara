@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cp1.css">
+   
+    <title>ApniParampara</title>
+</head>
+<body>
+
+    <section id="home">
+    <div class="banner">
+
+        
+        <video loop muted autoplay>
+            <source src="video/final website (1) (1) (1).mp4">
+        </video>
+        
+        <div class="navbar">
+            <h3 class="logo">🪷ApniParampara </h3>
+            <nav>
+            
+            <ul>
+                <li><a href="#home">Home</a></li>
+               
+                <li><a href="#culture">CULTURE</a></li>
+                <li><a href="#Art">Art</a></li>
+                <li><a href="#Food">FOOD</a></li>
+                <li><a href="#festival">FESTIVALS</a></li>
+            </ul>
+        </nav>
+        </div>
+
+
+        <div class="content">
+        </div>
+        
+
+    </div>
+    </section>
+
+      <!---------------------------------------------------------------------------------------------------------------------------------------->
+
+    
+    <section id="culture" class="sundar-section">
+
+  <div class="slider-container">
+    <h1 class="sundarbharatheading">CULTURE</h1>
+
+    <div class="slider" id="slider">
+
+      <div class="slide">
+        <a href="rajasthanculture.html"><img src="image/pexels-nicole-ashley-rahayu-densmoor-3632088-5435520.jpg" alt="Nature of India"></a>
+        <div class="slide-content">
+          <h2>Rajasthan</h2>
+          <p>Forests, rivers, and mountains define the beauty of India.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <a href="maharashtraculture.html"><img src="image/pexels-mahadev-kattimani-322734482-34166518.jpg" alt="Indian Wildlife"></a>
+        <div class="slide-content">
+          <h2>Maharashtra</h2>
+          <p>India has rich biodiversity and unique wildlife.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <img src="image/pexels-samarmourya-27131976.jpg" alt="Village Life">
+        <div class="slide-content">
+          <h2>Kashmir</h2>
+          <p>Indian villages preserve traditions and cultural roots.</p>
+        </div>
+      </div>
+
+      <div class="slide">
+        <a href="gujaratculture.html"><img src="image/pexels-sharadbhat-3974152.jpg" alt="Indian Wildlife"></a>
+        <div class="slide-content">
+          <h2>Gujarat</h2>
+          <p>India has rich biodiversity and unique wildlife.</p>
+        </div>
+      </div>
+
+      
+
+    </div>
+
+    <!-- Buttons MUST be inside slider-container -->
+    <button class="prev" onclick="prevSlide()">❮</button>
+    <button class="next" onclick="nextSlide()">❯</button>
+
+  </div>
+
+</section>
+
+<script src="cp1.js" defer></script>
+
+<!---------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<section id="Art"class="crafts-section">
+
+  <h1 class="crafts-title">INDIAN CRAFTS</h1>
+  <p class="crafts-subtitle">of timeless tradition</p>
+
+  <div class="crafts-slider-container">
+
+    <button class="craft-btn left" onclick="slideLeft()">❮</button>
+
+    <div class="crafts-slider" id="craftsSlider">
+
+      <div class="craft-card">
+        <img src="image/Screenshot 2026-01-04 183650.png">
+        <div class="craft-info">
+          <span>Assam</span>
+          <h3>Muga Silk</h3>
+        </div>
+      </div>
+
+      <div class="craft-card">
+        <img src="image/Screenshot 2026-01-04 184618.png">
+        <div class="craft-info">
+          <span>Rajasthan</span>
+          <h3>Kataputlli</h3>
+        </div>
+      </div>
+
+      <div class="craft-card">
+        <img src="image/Screenshot 2026-01-04 184116.png">
+        <div class="craft-info">
+          <span>Madhya Pradesh</span>
+          <h3>Bagh Prints</h3>
+        </div>
+      </div>
+
+      <div class="craft-card">
+        <img src="image/Screenshot 2026-01-04 183400.png">
+        <div class="craft-info">
+          <span>Maharashtra</span>
+          <h3>Warli Painting</h3>
+        </div>
+      </div>
+
+      <div class="craft-card">
+        <img src="image/Screenshot 2026-01-04 184751.png">
+        <div class="craft-info">
+          <span>Andra Pradesh</span>
+          <h3>Durgi Carving</h3>
+        </div>
+      </div>
+
+
+      <div class="craft-card">
+        <img src="image/Screenshot 2026-01-04 184116.png">
+        <div class="craft-info">
+          <span>Uttarakhand</span>
+          <h3>Aipan</h3>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="craft-btn right" onclick="slideRight()">❯</button>
+
+  </div>
+</section>
+<script src="cp2.js" defer></script>
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+<section id="Food"class="food-section">
+
+  <h2 class="section-title">FOOD </h2>
+
+  <div class="food-slider-wrapper">
+
+    <button class="food-arrow left" onclick="foodSlideLeft()">&#8592;</button>
+
+    <div class="food-slider" id="foodSlider">
+
+      <!-- Card 1 -->
+  
+
+      <div class="food-card">
+        <img src="image/Screenshot 2026-01-04 221321.png" alt="Meghalaya">
+        <div class="food-content">
+          <span class="state red">Vadapav</span> | <span>MUMBAI</span>
+          <h3>A popular Mumbai street food made of a spicy potato fritter placed inside a bread bun with chutneys.</h3>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="food-card">
+        <img src="image/Screenshot 2026-01-04 221525.png" alt="Mizoram Food">
+        <div class="food-content">
+          <span class="state red">Chole bhature</span> | <span>DELHI</span>
+          <h3>A famous North Indian dish of spicy chickpea curry served with deep-fried fluffy bread</h3>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="food-card">
+        <img src="image/Screenshot 2026-01-04 221349.png" alt="Nagaland">
+        <div class="food-content">
+          <span class="state red">Dosa</span> | <span>CHENNAI</span>
+          <h3>A thin, crispy South Indian pancake made from fermented rice and lentil batter, usually served with chutney and sambar.</h3>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="food-card">
+        <img src="image/Screenshot 2026-01-04 221418.png" alt="Odisha">
+        <div class="food-content">
+          <span class="state red">Rosogolla</span> | <span>KOLKATA</span>
+          <h3>A soft and spongy sweet made from chhena (paneer) balls soaked in sugar syrup, popular in Bengal.</h3>
+        </div>
+      </div>
+
+      <div class="food-card">
+        <img src="image/Screenshot 2026-01-04 221610.png" alt="Nagaland">
+        <div class="food-content">
+          <span class="state red">Biryani</span> | <span>HYDERABAD</span>
+          <h3>A flavorful rice dish cooked with aromatic spices, rice, and vegetables or meat, widely loved across India.</h3>
+        </div>
+      </div>
+
+      <div class="food-card">
+        <img src="image/Screenshot 2026-01-04 221719.png" alt="Nagaland">
+        <div class="food-content">
+          <span class="state red">Dal Bhati</span> | <span>JAIPUR</span>
+          <h3>A traditional Rajasthani dish consisting of baked wheat balls (baati), lentil curry (dal), and sweet crushed churma.</h3>
+        </div>
+      </div>
+
+      
+
+    </div>
+
+    <button class="food-arrow right" onclick="foodSlideRight()">&#8594;</button>
+
+  </div>
+</section>
+
+
+<script src="cp2.js" defer></script>
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
+
+<section id="festival"class="festival-section">
+
+  <h1 class="festival-title">FESTIVALS OF INDIA</h1>
+  <p class="festival-subtitle">colors, culture & celebration</p>
+
+  <div class="festival-slider-wrapper">
+
+    <button class="festival-arrow left" onclick="festivalSlideLeft()">❮</button>
+
+    <div class="festival-slider" id="festivalSlider">
+
+      <div class="festival-card">
+        <img src="image/pexels-rdne-7686304.jpg">
+        <div class="festival-info">
+          <span>Pan India</span>
+          <h3>Diwali – Festival of Lights</h3>
+        </div>
+      </div>
+
+      <div class="festival-card">
+        <img src="image/pexels-yogendras31-3447333.jpg">
+        <div class="festival-info">
+          <span>North India</span>
+          <h3>Holi – Festival of Colors</h3>
+        </div>
+      </div>
+
+      <div class="festival-card">
+        <img src="image/ganesh ustav.jpg">
+        <div class="festival-info">
+          <span>Maharashtra</span>
+          <h3>Ganeshustav </h3>
+        </div>
+      </div>
+
+      <div class="festival-card">
+        <img src="image/pexels-joydeb-biswas-2151744427-34139768.jpg">
+        <div class="festival-info">
+          <span>Gujarat</span>
+          <h3>Navaratri</h3>
+        </div>
+      </div>
+
+      <div class="festival-card">
+        <img src="image/Screenshot 2026-01-05 134626.png">
+        <div class="festival-info">
+          <span>Kerala</span>
+          <h3>Onam – Harvest Festival</h3>
+        </div>
+      </div>
+
+      <div class="festival-card">
+        <img src="image/Screenshot 2026-01-05 134836.png">
+        <div class="festival-info">
+          <span>West Bengal</span>
+          <h3>Durga Puja</h3>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="festival-arrow right" onclick="festivalSlideRight()">❯</button>
+
+  </div>
+</section>
+
+<script src="cp4.js" defer></script>
+
+
+
+<!--------------------------------------------------------------------------------------------------------------------------------------------->
+<section>
+<footer class="footer">
+  
+  @Samarth Dhage     
+   
+
+</footer>
+</section>
+
+    
+</body>
+</html>
