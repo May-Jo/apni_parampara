@@ -148,9 +148,9 @@ Contributions are welcome! To contribute:
 
 This project is open source and available under the MIT License - see the LICENSE file for details.
 
-## Author
+## Author and Rights
 
-**Mayan**
+**Mayank**
 - GitHub: [@May-Jo](https://github.com/May-Jo)
 
 ## Acknowledgments
