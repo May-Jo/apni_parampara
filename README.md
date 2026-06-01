@@ -29,20 +29,39 @@ ApniParampara is an interactive web application dedicated to preserving and prom
 
 ```
 ApniParampara/
-├── cp1.html                    # Home page with main navigation
-├── gujaratculture.html         # Gujarat cultural information
-├── maharashtraculture.html     # Maharashtra cultural information
-├── rajasthanculture.html       # Rajasthan cultural information
-├── cp1.css                     # Main stylesheet
-├── cp2.css                     # Additional styles
-├── cp1.js                      # Main interactive script
-├── cp2.js                      # Additional functionality
-├── cp3.js                      # Extra features
-├── cp4.js                      # Additional scripts
-├── image/                      # Image assets for cultural content
-├── video/                      # Video content
-└── README.md                   # Project documentation
+├── index.html                  # Main home page (entry point)
+├── README.md                   # Project documentation
+├── .gitignore                  # Git ignore file
+│
+├── css/                        # Stylesheets
+│   ├── style.css              # Main styles
+│   └── responsive.css         # Responsive design styles
+│
+├── js/                         # JavaScript files
+│   ├── main.js                # Main interactive functionality
+│   ├── slider.js              # Carousel/slider functionality
+│   ├── features.js            # Additional features
+│   └── utils.js               # Utility functions
+│
+├── pages/                      # Culture information pages
+│   ├── gujaratculture.html    # Gujarat cultural information
+│   ├── maharashtraculture.html # Maharashtra cultural information
+│   └── rajasthanculture.html   # Rajasthan cultural information
+│
+└── assets/                     # Media and static assets
+    ├── images/                # All image files (PNG, JPG)
+    └── videos/                # Video content (MP4)
 ```
+
+## Folder Organization
+
+The project follows a professional, industry-standard folder structure for better maintainability:
+
+- **`css/`**: All stylesheets are centralized for easy maintenance and updates
+- **`js/`**: JavaScript files organized by functionality for cleaner code management
+- **`pages/`**: Content pages separated from the main entry point for better organization
+- **`assets/`**: Media files consolidated with images and videos in separate subdirectories
+- **`index.html`**: Standard web entry point naming convention
 
 ## Technologies Used
 
@@ -66,8 +85,8 @@ cd apni_parampara
 ```
 
 2. Open the application:
-   - Simply open `cp1.html` in your web browser
-   - Or use a local server (recommended):
+   - Simply open `index.html` in your web browser, or
+   - Use a local server (recommended):
      ```bash
      # Using Python 3
      python -m http.server 8000
