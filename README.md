@@ -40,7 +40,6 @@ ApniParampara/
 ├── js/                         # JavaScript files
 │   ├── main.js                # Main interactive functionality
 │   ├── slider.js              # Carousel/slider functionality
-│   ├── features.js            # Additional features
 │   └── utils.js               # Utility functions
 │
 ├── pages/                      # Culture information pages
