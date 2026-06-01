@@ -48,13 +48,13 @@
         
 
         .gallery img {
-    width: 100%;
-    height: 220px;          /* FIXED HEIGHT */
-    object-fit: cover;     /* CROPS IMAGE NEATLY */
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    transition: transform 0.3s;
-}
+            width: 100%;
+            height: 220px;          /* FIXED HEIGHT */
+            object-fit: cover;     /* CROPS IMAGE NEATLY */
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
 
 
         .gallery img:hover {
@@ -66,15 +66,8 @@
             line-height: 1.6;
             margin-top: 20px;
         }
-
-        footer {
-            background-color: #4a2c2a;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            font-size: 14px;
-        }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
@@ -93,6 +86,17 @@
 </section>
 
 <section>
+    <h2>Did you know?</h2>
+    <p class="content">
+        • Capital: Mumbai<br>
+        • Financial capital of India<br>
+        • Home to Bollywood Film Industry<br>
+        • Famous for forts of Chhatrapati Shivaji Maharaj<br>
+        • Major Language: Marathi
+    </p>
+</section>
+
+<section>
     <h2>Glimpses of Culture</h2>
     <div class="gallery">
         <img src="../assets/images/maharashtra-dance.png" alt="Rajasthani Dance">
@@ -103,15 +107,30 @@
 </section>
 
 <section>
+    <h2>Tourist Locations</h2>
+    <p class="content">
+        Maharashtra offers many attractions including Mumbai, Pune, Mahabaleshwar,
+        Lonavala, Ajanta Caves, Ellora Caves, Shirdi, Gateway of India, and
+        Raigad Fort. The state combines historical, cultural, and modern attractions.
+    </p>
+</section>
+
+<section>
     <h2>Folk & Tradition</h2>
     <p class="content">
         Maharashtra’s folk and traditions reflect the spirit, bravery, and simplicity of its people. Folk arts like Lavani, Powada, and Tamasha express stories of valor, devotion, and everyday life through energetic dance and music. Festivals such as Ganesh Chaturthi, Gudi Padwa, and Wari are celebrated with deep faith and community bonding. Traditional attire, local crafts, and devotional songs together keep Maharashtra’s cultural heritage alive and vibrant across generations.
     </p>
 </section>
 
-<footer>
-BY Group Number 14 
-  </footer>
+<section>
+<video controls src="../assets/videos/maharashtra-video.mp4"></video>
+</section>
+
+<script>
+$(document).ready(function(){
+    $("section").hide().fadeIn(2000);
+});
+</script>  
 
 </body>
 </html>
