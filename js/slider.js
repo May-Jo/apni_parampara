@@ -58,42 +58,53 @@ function createLoopingSlider(sliderSelector, containerSelector, cardSelector) {
   };
 }
 
-const craftsCarousel = createLoopingSlider(
-  "#craftsSlider",
-  ".crafts-slider-container",
-  ".craft-card"
-);
-const foodCarousel = createLoopingSlider(
-  "#foodSlider",
-  ".food-slider-wrapper",
-  ".food-card"
-);
-const festivalCarousel = createLoopingSlider(
-  "#festivalSlider",
-  ".festival-slider-wrapper",
-  ".festival-card"
-);
+let craftsCarousel, foodCarousel, festivalCarousel;
+
+if (document.querySelector("#craftsSlider")) {
+  craftsCarousel = createLoopingSlider(
+    "#craftsSlider",
+    ".crafts-slider-container",
+    ".craft-card"
+  );
+}
+
+if (document.querySelector("#foodSlider") && !document.querySelector(".state-food-card")) {
+  // Only init home food slider if state-food-card is not there (to avoid conflict)
+  foodCarousel = createLoopingSlider(
+    "#foodSlider",
+    ".food-slider-wrapper",
+    ".food-card"
+  );
+}
+
+if (document.querySelector("#festivalSlider")) {
+  festivalCarousel = createLoopingSlider(
+    "#festivalSlider",
+    ".festival-slider-wrapper",
+    ".festival-card"
+  );
+}
 
 function slideRight() {
-  craftsCarousel.right();
+  if (craftsCarousel) craftsCarousel.right();
 }
 
 function slideLeft() {
-  craftsCarousel.left();
+  if (craftsCarousel) craftsCarousel.left();
 }
 
 function foodSlideRight() {
-  foodCarousel.right();
+  if (foodCarousel) foodCarousel.right();
 }
 
 function foodSlideLeft() {
-  foodCarousel.left();
+  if (foodCarousel) foodCarousel.left();
 }
 
 function festivalSlideRight() {
-  festivalCarousel.right();
+  if (festivalCarousel) festivalCarousel.right();
 }
 
 function festivalSlideLeft() {
-  festivalCarousel.left();
+  if (festivalCarousel) festivalCarousel.left();
 }
