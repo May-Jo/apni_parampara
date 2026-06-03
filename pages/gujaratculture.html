@@ -73,6 +73,30 @@
         #map:hover{
             transform: scale(1.05);
         }
+
+        .place-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+            text-align: left;
+            
+        }
+
+        .place-card:hover {
+            transform: scale(1.05);
+        }
+
+        .place-card h3 {
+            color: #b23a48;
+            margin-top: 0;
+        }
+
+        .place-card p {
+            font-size: 15px;
+            line-height: 1.5;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -114,11 +138,45 @@
 
 <section>
     <h2>Tourist Locations</h2>
-    <p class="content">
-        Gujarat is known for the Statue of Unity, Gir National Park, Somnath Temple,
-        Dwarka, Rann of Kutch, Sabarmati Ashram, Champaner-Pavagadh Archaeological Park,
-        and Saputara Hill Station.
-    </p>
+    
+    <div class="gallery">
+
+    <div class="place-card">
+        <h3>Statue of Unity</h3>
+        <p>
+            The world's tallest statue, dedicated to Sardar Vallabhbhai Patel,
+            located near Kevadia.
+        </p>
+        <a href="https://maps.google.com/?q=Statue+of+Unity">View on Map</a>
+    </div>
+
+    <div class="place-card">
+        <h3>Rann of Kutch</h3>
+        <p>
+            A vast white salt desert famous for its breathtaking landscapes
+            and the annual Rann Utsav.
+        </p>
+        <a href="https://maps.google.com/?q=Rann+of+Kutch">View on Map</a>
+    </div>
+
+    <div class="place-card">
+        <h3>Somnath Temple</h3>
+        <p>
+            One of the twelve Jyotirlingas and among India's most revered
+            pilgrimage destinations.
+        </p>
+        <a href="https://maps.google.com/?q=Somnath+Temple">View on Map</a>
+    </div>
+
+    <div class="place-card">
+        <h3>Gir National Park</h3>
+        <p>
+            The only natural habitat of the majestic Asiatic Lion in the world.
+        </p>
+        <a href="https://maps.google.com/?q=Gir+National+Park">View on Map</a>
+    </div>
+
+    </div>
 </section>
 
 <section>

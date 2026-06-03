@@ -70,6 +70,30 @@
         #map:hover{
             transform: scale(1.05);
         }
+
+        .place-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+            text-align: left;
+            
+        }
+
+        .place-card:hover {
+            transform: scale(1.05);
+        }
+
+        .place-card h3 {
+            color: #b23a48;
+            margin-top: 0;
+        }
+
+        .place-card p {
+            font-size: 15px;
+            line-height: 1.5;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -114,12 +138,43 @@
 
 <section>
     <h2>Tourist Locations</h2>
-    <p class="content">
-        Jammu & Kashmir is home to many famous tourist destinations including
-        Srinagar, Gulmarg, Pahalgam, Sonmarg, Vaishno Devi Temple, Dal Lake,
-        Mughal Gardens, and Betaab Valley. These places attract millions of
-        visitors every year with their scenic beauty and spiritual significance.
-    </p>
+
+    <div class="gallery">
+        <div class="place-card">
+            <h3>Dal Lake</h3>
+            <p>
+                Famous for its beautiful shikara rides and floating markets,
+                Dal Lake is one of Kashmir's most iconic attractions.
+            </p>
+            <a href="https://maps.google.com/?q=Dal+Lake+Srinagar">View on Map</a>
+        </div>
+        <div class="place-card">
+            <h3>Gulmarg</h3>
+            <p>
+                Known for skiing, snow-covered mountains, and one of the
+                world's highest cable cars, the Gulmarg Gondola.
+            </p>
+            <a href="https://maps.google.com/?q=Gulmarg">View on Map</a>
+        </div>
+
+        <div class="place-card">
+            <h3>Sonmarg</h3>
+            <p>
+                Known as the "Meadow of Gold," Sonmarg offers stunning views
+                of glaciers and alpine meadows.
+            </p>
+            <a href="https://maps.google.com/?q=Sonmarg">View on Map</a>
+        </div>
+
+        <div class="place-card">
+            <h3>Vaishno Devi Temple</h3>
+            <p>
+                One of India's most visited pilgrimage sites, attracting
+                millions of devotees every year.
+            </p>
+            <a href="https://maps.google.com/?q=Vaishno+Devi+Temple">View on Map</a>
+        </div>
+    </div>
 </section>
 
 <section>

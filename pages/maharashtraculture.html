@@ -66,6 +66,30 @@
             line-height: 1.6;
             margin-top: 20px;
         }
+
+        .place-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+            text-align: left;
+            
+        }
+
+        .place-card:hover {
+            transform: scale(1.05);
+        }
+
+        .place-card h3 {
+            color: #b23a48;
+            margin-top: 0;
+        }
+
+        .place-card p {
+            font-size: 15px;
+            line-height: 1.5;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -108,11 +132,46 @@
 
 <section>
     <h2>Tourist Locations</h2>
-    <p class="content">
-        Maharashtra offers many attractions including Mumbai, Pune, Mahabaleshwar,
-        Lonavala, Ajanta Caves, Ellora Caves, Shirdi, Gateway of India, and
-        Raigad Fort. The state combines historical, cultural, and modern attractions.
-    </p>
+  
+    <div class="gallery">
+
+    <div class="place-card">
+        <h3>Gateway of India</h3>
+        <p>
+            Mumbai's most famous landmark, overlooking the Arabian Sea and
+            reflecting colonial-era architecture.
+        </p>
+        <a href="https://maps.google.com/?q=Gateway+of+India+Mumbai">View on Map</a>
+    </div>
+
+    <div class="place-card">
+        <h3>Ajanta Caves</h3>
+        <p>
+            A UNESCO World Heritage Site known for its ancient Buddhist
+            paintings and rock-cut caves.
+        </p>
+        <a href="https://maps.google.com/?q=Ajanta+Caves">View on Map</a>
+    </div>
+
+    <div class="place-card">
+        <h3>Ellora Caves</h3>
+        <p>
+            An extraordinary complex of rock-cut temples representing Hindu,
+            Buddhist, and Jain traditions.
+        </p>
+        <a href="https://maps.google.com/?q=Ellora+Caves">View on Map</a>
+    </div>
+
+    <div class="place-card">
+        <h3>Mahabaleshwar</h3>
+        <p>
+            A scenic hill station famous for strawberry farms, viewpoints,
+            and pleasant weather.
+        </p>
+        <a href="https://maps.google.com/?q=Mahabaleshwar">View on Map</a>
+    </div>
+
+    </div>
 </section>
 
 <section>

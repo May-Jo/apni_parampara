@@ -66,6 +66,30 @@
             line-height: 1.6;
             margin-top: 20px;
         }
+
+        .place-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+            text-align: left;
+            
+        }
+
+        .place-card:hover {
+            transform: scale(1.05);
+        }
+
+        .place-card h3 {
+            color: #b23a48;
+            margin-top: 0;
+        }
+
+        .place-card p {
+            font-size: 15px;
+            line-height: 1.5;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -108,11 +132,46 @@
 
 <section>
     <h2>Tourist Locations</h2>
-    <p class="content">
-        Rajasthan is famous for Jaipur, Udaipur, Jodhpur, Jaisalmer, Mount Abu,
-        Chittorgarh Fort, Amer Fort, Hawa Mahal, City Palace, and Ranthambore
-        National Park. These places showcase the state's royal heritage and desert beauty.
-    </p>
+   
+    <div class="gallery">
+
+    <div class="place-card">
+        <h3>Hawa Mahal</h3>
+        <p>
+            Jaipur's iconic "Palace of Winds" known for its unique honeycomb
+            architecture.
+        </p>
+        <a href="https://maps.google.com/?q=Hawa+Mahal+Jaipur">View on Map</a>
+    </div>
+
+    <div class="place-card">
+        <h3>Jaisalmer Fort</h3>
+        <p>
+            A magnificent golden sandstone fort rising from the heart of the
+            Thar Desert.
+        </p>
+        <a href="https://maps.google.com/?q=Jaisalmer+Fort">View on Map</a>
+    </div>
+
+    <div class="place-card">
+        <h3>City Palace Udaipur</h3>
+        <p>
+            A grand palace complex overlooking Lake Pichola and showcasing
+            royal Rajput heritage.
+        </p>
+        <a href="https://maps.google.com/?q=City+Palace+Udaipur">View on Map</a>
+    </div>
+
+    <div class="place-card">
+        <h3>Ranthambore National Park</h3>
+        <p>
+            One of India's best wildlife reserves, famous for Bengal tiger
+            sightings.
+        </p>
+        <a href="https://maps.google.com/?q=Ranthambore+National+Park">View on Map</a>
+    </div>
+
+    </div>
 </section>
 
 <section>

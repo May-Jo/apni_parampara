@@ -404,3 +404,20 @@ footer {
 .festival-arrow.left { left: -15px; }
 .festival-arrow.right { right: -15px; }
 
+.form {
+  background: #e6d30d;
+  padding: 100px 60px;
+}
+
+button{
+    padding: 8px 15px;
+    background: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+}
+
+button:hover{
+    background: #3ff83f;
+}
