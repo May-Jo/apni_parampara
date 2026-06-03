@@ -1,665 +1,139 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rangilo Rajasthan – Land of Colors &amp; Culture</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    /* ── Color Palette & CSS Variables ── */
-    :root {
-      --accent-color: #c44536; /* Saffron/Crimson */
-      --accent-hover: #ff9933; /* Golden saffron */
-      --bg-dark: #000000;
-      --bg-light: #fff7ec;
-      --text-dark: #2d1a0e;
-    }
+    <meta charset="UTF-8">
+    <title>Rangilo Rajasthan</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fff7ec;
+            color: #4a2c2a;
+        }
 
-    /* ── Base Reset ── */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body {
-      background: var(--bg-light);
-      color: var(--text-dark);
-      overflow-x: hidden;
-    }
+        header {
+            background: linear-gradient(to right, #c44536, #f3a712);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
 
-    /* ── Navbar ── */
-    .navbar {
-      width: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      padding: 20px 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    .logo {
-      font-size: 2rem;
-      font-weight: 900;
-      color: whitesmoke;
-      cursor: pointer;
-      text-decoration: none;
-    }
-    .navbar ul {
-      display: flex;
-      list-style: none;
-      gap: 20px;
-    }
-    .navbar ul li a {
-      text-decoration: none;
-      text-transform: uppercase;
-      color: white;
-      font-weight: 600;
-      padding: 10px 15px;
-      transition: 0.5s;
-    }
-    .navbar ul li a:hover {
-      background: white;
-      color: black;
-      border-radius: 10px;
-    }
+        header h1 {
+            margin: 0;
+            font-size: 42px;
+        }
 
-    /* ── Hero Banner ── */
-    .hero-banner {
-      width: 100%;
-      height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                  url('../assets/images/rajasthan-culture.jpg') center/cover no-repeat;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      position: relative;
-    }
-    .hero-content h1 {
-      font-size: 60px;
-      font-weight: 800;
-      margin-bottom: 10px;
-      letter-spacing: 2px;
-    }
-    .hero-content p {
-      font-size: 22px;
-      margin-bottom: 25px;
-    }
-    .back-btn {
-      padding: 12px 25px;
-      background: var(--accent-color);
-      color: white;
-      border: none;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: 10px;
-      transition: 0.3s;
-      cursor: pointer;
-    }
-    .back-btn:hover {
-      background: var(--accent-hover);
-    }
+        header p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
 
-    /* ── Tourist Locations with Interactive Map ── */
-    .tourist-section {
-      background: var(--accent-color);
-      color: white;
-      padding: 80px 5%;
-    }
-    .tourist-title-box {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-    .tourist-title {
-      font-size: 60px;
-      font-weight: 800;
-    }
-    .tourist-subtitle {
-      font-size: 22px;
-      opacity: 0.9;
-    }
-    .tourist-container {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .map-column {
-      position: sticky;
-      top: 100px;
-    }
-    .map-column iframe {
-      width: 100%;
-      height: 450px;
-      border-radius: 15px;
-      border: 4px solid white;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-    .map-label {
-      text-align: center;
-      margin-top: 15px;
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-    .spots-column {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      max-height: 490px;
-      overflow-y: auto;
-      padding-right: 10px;
-    }
-    .spots-column::-webkit-scrollbar {
-      width: 8px;
-    }
-    .spots-column::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.4);
-      border-radius: 4px;
-    }
-    .spot-card-item {
-      display: flex;
-      gap: 20px;
-      background: white;
-      color: black;
-      padding: 15px;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: 0.3s;
-      border: 3px solid transparent;
-    }
-    .spot-card-item:hover {
-      transform: translateX(8px);
-    }
-    .spot-card-item.active {
-      border-color: var(--accent-hover);
-      background: #fff8f0;
-    }
-    .spot-card-item img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-    .spot-card-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .spot-card-info h3 {
-      font-size: 1.25rem;
-      color: var(--accent-color);
-      margin-bottom: 5px;
-    }
-    .spot-card-info p {
-      font-size: 0.9rem;
-      color: #555;
-    }
-    .map-link-hint {
-      margin-top: 5px;
-      font-size: 0.8rem;
-      color: var(--accent-hover);
-      font-weight: 600;
-    }
+        section {
+            padding: 40px 10%;
+            text-align: center;
+        }
 
-    /* ── Food Section ── */
-    .food-section {
-      background: #f6c56f;
-      padding: 80px 5%;
-      color: black;
-      text-align: center;
-    }
-    .food-title {
-      font-size: 56px;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-    .food-subtitle {
-      font-size: 22px;
-      margin-bottom: 40px;
-      opacity: 0.9;
-    }
-    .food-slider-wrapper {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-    }
-    .food-slider {
-      display: flex;
-      gap: 25px;
-      transition: transform 0.6s ease;
-    }
-    .state-food-card {
-      min-width: 280px;
-      max-width: 280px;
-      background: black;
-      color: white;
-      border-radius: 12px;
-      overflow: hidden;
-      text-align: left;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    }
-    .state-food-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    .state-food-content {
-      padding: 20px;
-    }
-    .state-food-content span {
-      color: red;
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-    }
-    .state-food-content h3 {
-      margin-top: 8px;
-      font-size: 1.25rem;
-      margin-bottom: 5px;
-    }
-    .state-food-content p {
-      font-size: 0.9rem;
-      color: #ccc;
-      line-height: 1.4;
-    }
-    .food-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: white;
-      border: none;
-      font-size: 24px;
-      padding: 12px 16px;
-      cursor: pointer;
-      border-radius: 50%;
-      z-index: 10;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: 0.3s;
-    }
-    .food-arrow:hover {
-      background: black;
-      color: white;
-    }
-    .food-arrow.left { left: 15px; }
-    .food-arrow.right { right: 15px; }
+        section h2 {
+            color: #b23a48;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
 
-    /* ── Culture Slider Section ── */
-    .culture-slider-section {
-      background: var(--accent-hover);
-      padding: 80px 5%;
-      color: white;
-      text-align: center;
-    }
-    .slider-title {
-      font-size: 56px;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-    .slider-subtitle {
-      font-size: 22px;
-      margin-bottom: 40px;
-    }
-    .slider-outer {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-    }
-    .slider-track {
-      display: flex;
-      gap: 25px;
-      transition: transform 0.6s ease;
-    }
-    .culture-card {
-      min-width: 310px;
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      color: black;
-      text-align: left;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-    }
-    .culture-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
-    .culture-info {
-      padding: 20px;
-    }
-    .culture-info span {
-      color: red;
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-    }
-    .culture-info h3 {
-      margin-top: 8px;
-      font-size: 1.3rem;
-      margin-bottom: 8px;
-    }
-    .culture-info p {
-      font-size: 0.9rem;
-      color: #666;
-      line-height: 1.45;
-    }
-    .arrow-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: white;
-      border: none;
-      font-size: 24px;
-      padding: 12px 16px;
-      cursor: pointer;
-      border-radius: 50%;
-      z-index: 10;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: 0.3s;
-    }
-    .arrow-btn:hover {
-      background: black;
-      color: white;
-    }
-    .arrow-btn.left { left: 15px; }
-    .arrow-btn.right { right: 15px; }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
 
-    /* ── Footer ── */
-    .footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      width: 100%;
-    }
+        
 
-    @media (max-width: 900px) {
-      .tourist-container {
-        grid-template-columns: 1fr;
-      }
-      .map-column {
-        position: relative;
-        top: 0;
-      }
-    }
-  </style>
+        .gallery img {
+            width: 100%;
+            height: 220px;          /* FIXED HEIGHT */
+            object-fit: cover;     /* CROPS IMAGE NEATLY */
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .content {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <div class="navbar">
-    <a href="../index.html" class="logo">🪷ApniParampara</a>
-    <nav>
-      <ul>
-        <li><a href="../index.html#home">Home</a></li>
-        <li><a href="../index.html#culture">CULTURE</a></li>
-        <li><a href="../index.html#Art">Art</a></li>
-        <li><a href="../index.html#Food">FOOD</a></li>
-        <li><a href="../index.html#festival">FESTIVALS</a></li>
-      </ul>
-    </nav>
-  </div>
+<header>
+    <h1>रंगीलो Rajasthan</h1>
+    <p>Land of Colors, Culture & Courage</p>
+</header>
 
-  <!-- Hero Banner -->
-  <div class="hero-banner">
-    <div class="hero-content">
-      <h1>रंगीलो Rajasthan</h1>
-      <p>Land of Kings, Heritage &amp; Desert Dunes</p>
-      <a href="../index.html" class="back-btn">← Back to Home</a>
+<section>
+    <h2>About Rajasthan</h2>
+    <p class="content">
+        Rajasthan is known for its royal heritage, vibrant traditions, colorful attire,
+        folk dances, majestic forts, and warm hospitality. Every festival, costume,
+        and song reflects the proud history of this desert land.
+    </p>
+</section>
+
+<section>
+    <h2>Did you know?</h2>
+    <p class="content">
+         Capital: Jaipur<br>
+         Largest state in India by area<br>
+         Known as the "Land of Kings"<br>
+         Famous for forts, palaces, folk dances, and camel festivals<br>
+         Major Language: Hindi and Rajasthani dialects
+    </p>
+</section>
+
+<section>
+    <h2>Glimpses of Culture</h2>
+    <div class="gallery">
+        <img src="../assets/images/rajasthan-culture-2.jpg" alt="Rajasthani Dance">
+        <img src="../assets/images/rajasthan-hawa-mahal.png" alt="Hawa Mahal">
+        <img src="../assets/images/rajasthan-hawa-mahal-2.png" alt="Camel Safari">
+        <img src="../assets/images/rajasthan-food.png" alt="Rajasthani Food">
     </div>
-  </div>
+</section>
 
-  <!-- Tourist Locations & Interactive Map -->
-  <div class="tourist-section">
-    <div class="tourist-title-box">
-      <h1 class="tourist-title">TOURIST LOCATIONS</h1>
-      <p class="tourist-subtitle">Click on any destination to view it on the map &amp; open in Google Maps</p>
-    </div>
+<section>
+    <h2>Tourist Locations</h2>
+    <p class="content">
+        Rajasthan is famous for Jaipur, Udaipur, Jodhpur, Jaisalmer, Mount Abu,
+        Chittorgarh Fort, Amer Fort, Hawa Mahal, City Palace, and Ranthambore
+        National Park. These places showcase the state's royal heritage and desert beauty.
+    </p>
+</section>
 
-    <div class="tourist-container">
-      <!-- Left Column: Map -->
-      <div class="map-column">
-        <iframe 
-          id="map-iframe"
-          src="https://maps.google.com/maps?q=Hawa%20Mahal,%20Jaipur&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-          allowfullscreen 
-          loading="lazy">
-        </iframe>
-        <div class="map-label">Currently Viewing: <span id="active-spot-name">Hawa Mahal, Jaipur</span></div>
-      </div>
+<section>
+    <h2>Folk & Tradition</h2>
+    <p class="content">
+        From the graceful Ghoomar dance to soulful folk music,
+        Rajasthan’s culture is deeply rooted in tradition.
+        Festivals like Teej, Gangaur, and Pushkar Fair add
+        life and color to the land.
+    </p>
+</section>
 
-      <!-- Right Column: Spots List -->
-      <div class="spots-column">
-        <div class="spot-card-item active" onclick="updateMap('Hawa Mahal, Jaipur', 'https://www.google.com/maps/search/?api=1&query=Hawa+Mahal+Jaipur', this)">
-          <img src="https://images.unsplash.com/photo-1603262110263-fb0112e7cc33?w=200&q=80" alt="Hawa Mahal">
-          <div class="spot-card-info">
-            <h3>Hawa Mahal</h3>
-            <p>The iconic pink sandstone Palace of Winds with 953 intricate windows.</p>
-            <div class="map-link-hint">Click to open on Google Maps ↗</div>
-          </div>
-        </div>
+<section>
+<video controls src="../assets/videos/rajasthan-video.mp4"></video>
+</section>
 
-        <div class="spot-card-item" onclick="updateMap('Mehrangarh Fort, Jodhpur', 'https://www.google.com/maps/search/?api=1&query=Mehrangarh+Fort+Jodhpur', this)">
-          <img src="https://images.unsplash.com/photo-1566873535350-a3f5d4a804b7?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Mehrangarh Fort">
-          <div class="spot-card-info">
-            <h3>Mehrangarh Fort</h3>
-            <p>A formidable hill fortress rising 410 feet above the beautiful Blue City.</p>
-            <div class="map-link-hint">Click to open on Google Maps ↗</div>
-          </div>
-        </div>
+<script>
+$(document).ready(function(){
+    $("section").hide().fadeIn(2000);
+});
+</script>
 
-        <div class="spot-card-item" onclick="updateMap('City Palace, Udaipur', 'https://www.google.com/maps/search/?api=1&query=City+Palace+Udaipur', this)">
-          <img src="https://images.unsplash.com/photo-1595867818082-083862f3d630?w=200&q=80" alt="City Palace Udaipur">
-          <div class="spot-card-info">
-            <h3>City Palace</h3>
-            <p>A majestic palace complex on Lake Pichola, showcasing Mewar architecture.</p>
-            <div class="map-link-hint">Click to open on Google Maps ↗</div>
-          </div>
-        </div>
-
-        <div class="spot-card-item" onclick="updateMap('Sam Sand Dunes, Jaisalmer', 'https://www.google.com/maps/search/?api=1&query=Sam+Sand+Dunes+Jaisalmer', this)">
-          <img src="https://images.unsplash.com/photo-1504681869696-d977211a5f4c?w=200&q=80" alt="Jaisalmer Desert">
-          <div class="spot-card-info">
-            <h3>Jaisalmer Dunes</h3>
-            <p>Golden sand dunes offering camel safaris and traditional overnight camps.</p>
-            <div class="map-link-hint">Click to open on Google Maps ↗</div>
-          </div>
-        </div>
-
-        <div class="spot-card-item" onclick="updateMap('Amer Fort, Jaipur', 'https://www.google.com/maps/search/?api=1&query=Amer+Fort+Jaipur', this)">
-          <img src="https://images.unsplash.com/photo-1599661046289-e31897846e41?w=200&q=80" alt="Amer Fort">
-          <div class="spot-card-info">
-            <h3>Amer Fort</h3>
-            <p>Hilltop fort built of red sandstone and marble, known for its artistic Sheesh Mahal.</p>
-            <div class="map-link-hint">Click to open on Google Maps ↗</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Food Section -->
-  <div class="food-section">
-    <h1 class="food-title">FOOD &amp; CUISINE</h1>
-    <p class="food-subtitle">The rich, aromatic and royal flavors of Rajasthan</p>
-    
-    <div class="food-slider-wrapper">
-      <button class="food-arrow left" onclick="stateFoodCarousel.left()">❮</button>
-      <div class="food-slider" id="stateFoodSlider">
-        
-        <!-- Food Item 1 -->
-        <div class="state-food-card">
-          <img src="../assets/images/jaipur-dal-bhati.png" alt="Dal Baati Churma">
-          <div class="state-food-content">
-            <span>DAL BAATI CHURMA</span>
-            <h3>Dal Baati Churma</h3>
-            <p>Baked round wheat flour dough balls served with rich spiced lentils and sweet ghee-loaded churma.</p>
-          </div>
-        </div>
-
-        <!-- Food Item 2 -->
-        <div class="state-food-card">
-          <img src="https://www.licious.in/blog/wp-content/uploads/2020/12/Laal-Maas.jpg" alt="Laal Maas">
-          <div class="state-food-content">
-            <span>SPICY CURRY</span>
-            <h3>Laal Maas</h3>
-            <p>A fiery and legendary mutton curry cooked in yogurt and spiced hot Mathania red chilies.</p>
-          </div>
-        </div>
-
-        <!-- Food Item 3 -->
-        <div class="state-food-card">
-          <img src="https://images.healthshots.com/healthshots/hi/uploads/2022/03/30175856/Pyaz-kachori-recipe.jpg" alt="Pyaaz Kachori">
-          <div class="state-food-content">
-            <span>SAVORY SNACK</span>
-            <h3>Pyaaz Kachori</h3>
-            <p>Deep-fried crisp pastry stuffed with a highly spiced onion filling, served with sweet tamarind chutney.</p>
-          </div>
-        </div>
-
-        <!-- Food Item 4 -->
-        <div class="state-food-card">
-          <img src="https://t3.ftcdn.net/jpg/19/53/43/66/360_F_1953436620_p1aIlnYifVShYreGPQeMauME4PGmgLHb.jpg" alt="Ghewar">
-          <div class="state-food-content">
-            <span>FESTIVE SWEET</span>
-            <h3>Rajasthani Ghewar</h3>
-            <p>A traditional disc-shaped honeycomb sweet cake made with flour and ghee, soaked in sugar syrup.</p>
-          </div>
-        </div>
-
-        <!-- Food Item 5 -->
-        <div class="state-food-card">
-          <img src="https://maayeka.com/wp-content/uploads/2017/05/jodhpuri-mirchi-vada-maayeka.jpg.webp" alt="Mirchi Vada">
-          <div class="state-food-content">
-            <span>STREET SNACK</span>
-            <h3>Mirchi Vada</h3>
-            <p>Spicy chili fritters stuffed with mashed potato filling, coated in gram flour batter and deep fried.</p>
-          </div>
-        </div>
-
-      </div>
-      <button class="food-arrow right" onclick="stateFoodCarousel.right()">❯</button>
-    </div>
-  </div>
-
-  <!-- Culture Glimpses Slider Section -->
-  <div class="culture-slider-section">
-    <h1 class="slider-title">CULTURE GLIMPSES</h1>
-    <p class="slider-subtitle">Explore dance, food, craft &amp; festivals of Rajasthan</p>
-
-    <div class="slider-outer">
-      <button class="arrow-btn left" onclick="stateCultureCarousel.left()">❮</button>
-      <div class="slider-track" id="cultureSlider">
-        
-        <!-- Card 1: Dance -->
-        <div class="culture-card">
-          <img src="../assets/images/rajasthan-culture-2.jpg" alt="Folk Dance">
-          <div class="culture-info">
-            <span>DANCE</span>
-            <h3>Ghoomar &amp; Kalbelia</h3>
-            <p>Graceful, swirling folk dances performed by women in colorful traditional skirts called Ghagras.</p>
-          </div>
-        </div>
-
-        <!-- Card 2: Food -->
-        <div class="culture-card">
-          <img src="../assets/images/rajasthan-food.png" alt="Rajasthani Cuisine">
-          <div class="culture-info">
-            <span>CUISINE</span>
-            <h3>Traditional Flavors</h3>
-            <p>Signature recipes prepared using buttermilk, ghee and local desert beans like Ker Sangri.</p>
-          </div>
-        </div>
-
-        <!-- Card 3: Craft -->
-        <div class="culture-card">
-          <img src="../assets/images/rajasthan-katputli.png" alt="Katputli Puppetry">
-          <div class="culture-info">
-            <span>CRAFT</span>
-            <h3>Katputli Art</h3>
-            <p>Famous string puppet theater showcasing historical tales, legends, and social awareness.</p>
-          </div>
-        </div>
-
-        <!-- Card 4: Architecture -->
-        <div class="culture-card">
-          <img src="../assets/images/rajasthan-hawa-mahal.png" alt="Jaipur Architecture">
-          <div class="culture-info">
-            <span>HERITAGE</span>
-            <h3>Palace Structures</h3>
-            <p>Famous pink and red sandstone monuments showcasing Rajput architectural genius.</p>
-          </div>
-        </div>
-
-        <!-- Card 5: Camel -->
-        <div class="culture-card">
-          <img src="https://blog.dookinternational.com/wp-content/uploads/2017/06/a24.jpg" alt="Camel Fair">
-          <div class="culture-info">
-            <span>FESTIVAL</span>
-            <h3>Desert &amp; Camel Fairs</h3>
-            <p>Vibrant gatherings featuring camel races, traditional music, and colorful local markets.</p>
-          </div>
-        </div>
-
-        <!-- Card 6: Pottery -->
-        <div class="culture-card">
-          <img src="https://3.imimg.com/data3/QK/TP/MY-9091856/blue-pottery.jpg" alt="Blue Pottery">
-          <div class="culture-info">
-            <span>ART</span>
-            <h3>Jaipur Blue Pottery</h3>
-            <p>Traditional craft glazed and decorated with cobalt blue dye, unique for not using clay.</p>
-          </div>
-        </div>
-
-        <!-- Card 7: Bandhani -->
-        <div class="culture-card">
-          <img src="https://springsoul.in/cdn/shop/articles/bandhani.jpg?v=1701674701" alt="Bandhani">
-          <div class="culture-info">
-            <span>TEXTILE</span>
-            <h3>Bandhani Tie &amp; Dye</h3>
-            <p>A highly skilled tie-dye textile art representing colorful cultural dresses and turbans.</p>
-          </div>
-        </div>
-
-      </div>
-      <button class="arrow-btn right" onclick="stateCultureCarousel.right()">❯</button>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <p>🪷 ApniParampara | Course Project - Group 6</p>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="../js/slider.js"></script>
-  <script>
-    // Map redirect function
-    function updateMap(locationName, mapUrl, element) {
-      const iframe = document.getElementById('map-iframe');
-      iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(locationName)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
-      
-      // Update active state in cards
-      document.querySelectorAll('.spot-card-item').forEach(card => {
-        card.classList.remove('active');
-      });
-      element.classList.add('active');
-      
-      // Update label
-      document.getElementById('active-spot-name').innerText = locationName;
-
-      // Open in Google Maps page in new tab
-      window.open(mapUrl, '_blank');
-    }
-
-    // Initialize sliders using the helper from slider.js
-    const stateFoodCarousel = createLoopingSlider("#stateFoodSlider", ".food-slider-wrapper", ".state-food-card");
-    const stateCultureCarousel = createLoopingSlider("#cultureSlider", ".slider-outer", ".culture-card");
-  </script>
 </body>
 </html>

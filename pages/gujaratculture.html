@@ -1,662 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jai Gujarat – Land of Lions &amp; Legends</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    /* ── Color Palette & CSS Variables ── */
-    :root {
-      --accent-color: #6a0dad; /* Purple */
-      --accent-hover: #f77f00; /* Golden / Orange */
-      --bg-dark: #000000;
-      --bg-light: #f5f0ff;
-      --text-dark: #1a0a2e;
-    }
+    <meta charset="UTF-8">
+    <title>Garvi Gujarat</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fff7ec;
+            color: #4a2c2a;
+        }
 
-    /* ── Base Reset ── */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
-    body {
-      background: var(--bg-light);
-      color: var(--text-dark);
-      overflow-x: hidden;
-    }
+        header {
+            background: linear-gradient(to right, blue, #f3a712);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
 
-    /* ── Navbar ── */
-    .navbar {
-      width: 100%;
-      background: rgba(0, 0, 0, 0.9);
-      padding: 20px 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-    .logo {
-      font-size: 2rem;
-      font-weight: 900;
-      color: whitesmoke;
-      cursor: pointer;
-      text-decoration: none;
-    }
-    .navbar ul {
-      display: flex;
-      list-style: none;
-      gap: 20px;
-    }
-    .navbar ul li a {
-      text-decoration: none;
-      text-transform: uppercase;
-      color: white;
-      font-weight: 600;
-      padding: 10px 15px;
-      transition: 0.5s;
-    }
-    .navbar ul li a:hover {
-      background: white;
-      color: black;
-      border-radius: 10px;
-    }
+        header h1 {
+            margin: 0;
+            font-size: 42px;
+        }
 
-    /* ── Hero Banner ── */
-    .hero-banner {
-      width: 100%;
-      height: 100vh;
-      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                  url('../assets/images/gujarat-culture.jpg') center/cover no-repeat;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-      position: relative;
-    }
-    .hero-content h1 {
-      font-size: 60px;
-      font-weight: 800;
-      margin-bottom: 10px;
-      letter-spacing: 2px;
-    }
-    .hero-content p {
-      font-size: 22px;
-      margin-bottom: 25px;
-    }
-    .back-btn {
-      padding: 12px 25px;
-      background: var(--accent-color);
-      color: white;
-      border: none;
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: 10px;
-      transition: 0.3s;
-      cursor: pointer;
-    }
-    .back-btn:hover {
-      background: var(--accent-hover);
-    }
+        header p {
+            font-size: 18px;
+            margin-top: 10px;
+        }
 
-    /* ── Tourist Locations with Interactive Map ── */
-    .tourist-section {
-      background: var(--accent-color);
-      color: white;
-      padding: 80px 5%;
-    }
-    .tourist-title-box {
-      text-align: center;
-      margin-bottom: 50px;
-    }
-    .tourist-title {
-      font-size: 60px;
-      font-weight: 800;
-    }
-    .tourist-subtitle {
-      font-size: 22px;
-      opacity: 0.9;
-    }
-    .tourist-container {
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 40px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .map-column {
-      position: sticky;
-      top: 100px;
-    }
-    .map-column iframe {
-      width: 100%;
-      height: 450px;
-      border-radius: 15px;
-      border: 4px solid white;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    }
-    .map-label {
-      text-align: center;
-      margin-top: 15px;
-      font-size: 1.2rem;
-      font-weight: 600;
-    }
-    .spots-column {
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      max-height: 490px;
-      overflow-y: auto;
-      padding-right: 10px;
-    }
-    .spots-column::-webkit-scrollbar {
-      width: 8px;
-    }
-    .spots-column::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.4);
-      border-radius: 4px;
-    }
-    .spot-card-item {
-      display: flex;
-      gap: 20px;
-      background: white;
-      color: black;
-      padding: 15px;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: 0.3s;
-      border: 3px solid transparent;
-    }
-    .spot-card-item:hover {
-      transform: translateX(8px);
-    }
-    .spot-card-item.active {
-      border-color: var(--accent-hover);
-      background: #fff8f0;
-    }
-    .spot-card-item img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 8px;
-    }
-    .spot-card-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .spot-card-info h3 {
-      font-size: 1.25rem;
-      color: var(--accent-color);
-      margin-bottom: 5px;
-    }
-    .spot-card-info p {
-      font-size: 0.9rem;
-      color: #555;
-    }
-    .map-link-hint {
-      margin-top: 5px;
-      font-size: 0.8rem;
-      color: var(--accent-hover);
-      font-weight: 600;
-    }
+        section {
+            padding: 40px 10%;
+            text-align: center;
+        }
 
-    /* ── Food Section ── */
-    .food-section {
-      background: #f6c56f;
-      padding: 80px 5%;
-      color: black;
-      text-align: center;
-    }
-    .food-title {
-      font-size: 56px;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-    .food-subtitle {
-      font-size: 22px;
-      margin-bottom: 40px;
-      opacity: 0.9;
-    }
-    .food-slider-wrapper {
-      position: relative;
-      overflow: hidden;
-      width: 100%;
-    }
-    .food-slider {
-      display: flex;
-      gap: 25px;
-      transition: transform 0.6s ease;
-    }
-    .state-food-card {
-      min-width: 280px;
-      max-width: 280px;
-      background: black;
-      color: white;
-      border-radius: 12px;
-      overflow: hidden;
-      text-align: left;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    }
-    .state-food-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    .state-food-content {
-      padding: 20px;
-    }
-    .state-food-content span {
-      color: red;
-      font-weight: bold;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-    }
-    .state-food-content h3 {
-      margin-top: 8px;
-      font-size: 1.25rem;
-      margin-bottom: 5px;
-    }
-    .state-food-content p {
-      font-size: 0.9rem;
-      color: #ccc;
-      line-height: 1.4;
-    }
-    .food-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: white;
-      border: none;
-      font-size: 24px;
-      padding: 12px 16px;
-      cursor: pointer;
-      border-radius: 50%;
-      z-index: 10;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: 0.3s;
-    }
-    .food-arrow:hover {
-      background: black;
-      color: white;
-    }
-    .food-arrow.left { left: 15px; }
-    .food-arrow.right { right: 15px; }
+        section h2 {
+            color: #b23a48;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
 
-    /* ── Culture Slider Section ── */
-    .culture-slider-section {
-      background: var(--accent-hover);
-      padding: 80px 5%;
-      color: white;
-      text-align: center;
-    }
-    .slider-title {
-      font-size: 56px;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-    .slider-subtitle {
-      font-size: 22px;
-      margin-bottom: 40px;
-    }
-    .slider-outer {
-      position: relative;
-      width: 100%;
-      overflow: hidden;
-    }
-    .slider-track {
-      display: flex;
-      gap: 25px;
-      transition: transform 0.6s ease;
-    }
-    .culture-card {
-      min-width: 310px;
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      color: black;
-      text-align: left;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-    }
-    .culture-card img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-    }
-    .culture-info {
-      padding: 20px;
-    }
-    .culture-info span {
-      color: red;
-      font-weight: 700;
-      text-transform: uppercase;
-      font-size: 0.85rem;
-    }
-    .culture-info h3 {
-      margin-top: 8px;
-      font-size: 1.3rem;
-      margin-bottom: 8px;
-    }
-    .culture-info p {
-      font-size: 0.9rem;
-      color: #666;
-      line-height: 1.45;
-    }
-    .arrow-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: white;
-      border: none;
-      font-size: 24px;
-      padding: 12px 16px;
-      cursor: pointer;
-      border-radius: 50%;
-      z-index: 10;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: 0.3s;
-    }
-    .arrow-btn:hover {
-      background: black;
-      color: white;
-    }
-    .arrow-btn.left { left: 15px; }
-    .arrow-btn.right { right: 15px; }
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
 
-    /* ── Footer ── */
-    .footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      width: 100%;
-    }
+        
 
-    @media (max-width: 900px) {
-      .tourist-container {
-        grid-template-columns: 1fr;
-      }
-      .map-column {
-        position: relative;
-        top: 0;
-      }
-    }
-  </style>
+        .gallery img {
+            width: 100%;
+            height: 220px;          /* FIXED HEIGHT */
+            object-fit: cover;     /* CROPS IMAGE NEATLY */
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        .content {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+        #map{
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        #map:hover{
+            transform: scale(1.05);
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <div class="navbar">
-    <a href="../index.html" class="logo">🪷ApniParampara</a>
-    <nav>
-      <ul>
-        <li><a href="../index.html#home">Home</a></li>
-        <li><a href="../index.html#culture">CULTURE</a></li>
-        <li><a href="../index.html#Art">Art</a></li>
-        <li><a href="../index.html#Food">FOOD</a></li>
-        <li><a href="../index.html#festival">FESTIVALS</a></li>
-      </ul>
-    </nav>
-  </div>
+<header>
+    <h1>કેમ છો Gujarat</h1>
+    <p>Culture of Color, Dance & Devotion</p>
+</header>
 
-  <!-- Hero Banner -->
-  <div class="hero-banner">
-    <div class="hero-content">
-      <h1>जय Gujarat</h1>
-      <p>Land of Asiatic Lions, Salt Deserts &amp; Garba</p>
-      <a href="../index.html" class="back-btn">← Back to Home</a>
+<section>
+    <h2>About Gujarat</h2>
+    <p class="content">
+         Gujarat is famous for its vibrant festivals, Garba dance,
+        rich handicrafts, spiritual heritage, and warm hospitality.
+        It reflects simplicity, discipline, and joyful traditions.
+</section>
+
+<section>
+    <h2>Did you know?</h2>
+    <p class="content">
+         Capital: Gandhinagar<br>
+         Birthplace of Mahatma Gandhi<br>
+         Home to the Asiatic Lion in Gir Forest<br>
+         Famous for Garba, Bandhani textiles, and White Desert of Kutch<br>
+         Major Language: Gujarati
+    </p>
+</section>
+
+<section>
+    <h2>Glimpses of Culture</h2>
+    <div class="gallery">
+        <img src="../assets/images/gujarat-dance.png" alt="Rajasthani Dance">
+        <img src="../assets/images/gujarat-hawa-mahal.png" alt="Hawa Mahal">
+        <img src="../assets/images/gujarat-camel-safari.png" alt="Camel Safari">
+        <img src="../assets/images/gujarat-food.png" alt="Rajasthani Food">
     </div>
-  </div>
+</section>
 
-  <!-- Tourist Locations & Interactive Map -->
-  <div class="tourist-section">
-    <div class="tourist-title-box">
-      <h1 class="tourist-title">TOURIST LOCATIONS</h1>
-      <p class="tourist-subtitle">Click on any destination to view it on the map &amp; open in Google Maps</p>
-    </div>
+<section>
+    <h2>Tourist Locations</h2>
+    <p class="content">
+        Gujarat is known for the Statue of Unity, Gir National Park, Somnath Temple,
+        Dwarka, Rann of Kutch, Sabarmati Ashram, Champaner-Pavagadh Archaeological Park,
+        and Saputara Hill Station.
+    </p>
+</section>
 
-    <div class="tourist-container">
-      <!-- Left Column: Map -->
-      <div class="map-column">
-        <iframe 
-          id="map-iframe"
-          src="https://maps.google.com/maps?q=Sabarmati%20Ashram,%20Ahmedabad&t=&z=15&ie=UTF8&iwloc=&output=embed" 
-          allowfullscreen 
-          loading="lazy">
-        </iframe>
-        <div class="map-label">Currently Viewing: <span id="active-spot-name">Sabarmati Ashram, Ahmedabad</span></div>
-      </div>
+<section>
+    <h2>Folk & Tradition</h2>
+    <p class="content">
+        Gujarat’s folk and traditions are vibrant, joyful, and deeply rooted in community life. Folk dances like **Garba** and **Dandiya Raas** celebrate devotion and togetherness, especially during Navratri. Traditional music, colorful attire, handicrafts, and festivals reflect simplicity, discipline, and cultural pride. Through its customs and celebrations, Gujarat preserves a rich heritage that blends spirituality with everyday life.
 
-      <!-- Right Column: Spots List -->
-      <div class="spots-column">
-        <div class="spot-card-item active" onclick="updateMap('Sabarmati Ashram, Ahmedabad', 'https://www.google.com/maps/search/?api=1&query=Sabarmati+Ashram+Ahmedabad', this)">
-          <img src="https://images.unsplash.com/photo-1520637836862-4d197d17c93a?w=200&q=80" alt="Sabarmati Ashram">
-          <div class="spot-card-info">
-            <h3>Sabarmati Ashram</h3>
-            <p>The peaceful residence of Mahatma Gandhi and a key landmark of India's independence movement.</p>
-            <div class="map-link-hint">Click to open on Google Maps ↗</div>
-          </div>
-        </div>
+    </p>
+</section>
 
-        <div class="spot-card-item" onclick="updateMap('Rann of Kutch', 'https://www.google.com/maps/search/?api=1&query=Rann+of+Kutch', this)">
-          <img src="https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=200&q=80" alt="Rann of Kutch">
-          <div class="spot-card-info">
-            <h3>Rann of Kutch</h3>
-            <p>A spectacular salt desert that glows white, especially beautiful during Rann Utsav.</p>
-            <div class="map-link-hint">Click to open on Google Maps ↗</div>
-          </div>
-        </div>
+<section>
+    <h2>State Map</h2>
+    <img id="map" src="../assets/images/gujarat-statemap.jpg" alt="Gujarat Map" width="400">
+</section>
 
-        <div class="spot-card-item" onclick="updateMap('Gir National Park', 'https://www.google.com/maps/search/?api=1&query=Gir+National+Park', this)">
-          <img src="https://images.unsplash.com/photo-1588416499018-1d36b8b0dc18?w=200&q=80" alt="Gir Forest">
-          <div class="spot-card-info">
-            <h3>Gir National Park</h3>
-            <p>The dry deciduous forest reserve which is the exclusive home to wild Asiatic Lions.</p>
-            <div class="map-link-hint">Click to open on Google Maps ↗</div>
-          </div>
-        </div>
+<script>
+$(document).ready(function(){
+    $("section").hide().fadeIn(2000);
+});
+</script>  
 
-        <div class="spot-card-item" onclick="updateMap('Somnath Temple', 'https://www.google.com/maps/search/?api=1&query=Somnath+Temple', this)">
-          <img src="https://images.unsplash.com/photo-1572364107590-2bded08d86e1?w=200&q=80" alt="Somnath Temple">
-          <div class="spot-card-info">
-            <h3>Somnath Temple</h3>
-            <p>A highly sacred shore temple dedicated to Lord Shiva, rebuilt multiple times in history.</p>
-            <div class="map-link-hint">Click to open on Google Maps ↗</div>
-          </div>
-        </div>
-
-        <div class="spot-card-item" onclick="updateMap('Dwarkadhish Temple', 'https://www.google.com/place/Dwarkadhish+Temple/@22.2376811,68.8911405,13z/data=!4m10!1m2!2m1!1sDwarka+Temple!3m6!1s0x39569c3ab7c4e9e5:0x31b7c3111df48f4!8m2!3d22.2376811!4d68.9673582!15sCg1Ed2Fya2EgVGVtcGxlWg8iDWR3YXJrYSB0ZW1wbGWSAQxoaW5kdV90ZW1wbGXgAQA!16s%2Fm%2F05b_lgx?hl=en-GB&entry=ttu&g_ep=EgoyMDI2MDUzMS4wIKXMDSoASAFQAw%3D%3D', this)">
-          <img src="https://images.unsplash.com/photo-1567168544646-208fa5d408fb?w=200&q=80" alt="Dwarka">
-          <div class="spot-card-info">
-            <h3>Dwarkadhish Temple</h3>
-            <p>An ancient temple complex in the holy city of Dwarka, associated with Lord Krishna.</p>
-            <div class="map-link-hint">Click to open on Google Maps ↗</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Food Section -->
-  <div class="food-section">
-    <h1 class="food-title">FOOD &amp; CUISINE</h1>
-    <p class="food-subtitle">The sweet, savory and globally-loved Gujarati flavors</p>
-    
-    <div class="food-slider-wrapper">
-      <button class="food-arrow left" onclick="stateFoodCarousel.left()">❮</button>
-      <div class="food-slider" id="stateFoodSlider">
-        
-        <!-- Food Item 1 -->
-        <div class="state-food-card">
-          <img src="../assets/images/gujarat-food.png" alt="Gujarati Thali">
-          <div class="state-food-content">
-            <span>GUJARATI SNACKS</span>
-            <h3>Dhokla &amp; Thepla</h3>
-            <p>Steamed savory chickpea-flour Khaman Dhoklas, and flatbreads made with fenugreek leaves (Thepla).</p>
-          </div>
-        </div>
-
-        <!-- Food Item 2 -->
-        <div class="state-food-card">
-          <img src="https://images.unsplash.com/photo-1601050690597-df056fb4c47a?w=400&q=80" alt="Fafda Jalebi">
-          <div class="state-food-content">
-            <span>SUNDAY SPECIAL</span>
-            <h3>Fafda Jalebi</h3>
-            <p>A classic combination of crispy chickpea flour crackers (Fafda) paired with sweet syrup-filled Jalebis.</p>
-          </div>
-        </div>
-
-        <!-- Food Item 3 -->
-        <div class="state-food-card">
-          <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&q=80" alt="Undhiyu">
-          <div class="state-food-content">
-            <span>WINTER DISH</span>
-            <h3>Undhiyu</h3>
-            <p>A rich mixed vegetable casserole prepared with local winter roots, baby eggplants, and fenugreek dumplings.</p>
-          </div>
-        </div>
-
-        <!-- Food Item 4 -->
-        <div class="state-food-card">
-          <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=400&q=80" alt="Khandvi">
-          <div class="state-food-content">
-            <span>SAVORY ROLL</span>
-            <h3>Khandvi</h3>
-            <p>Soft, tightly rolled savory snacks made from chickpea flour paste cooked with yogurt and spiced mustard oil.</p>
-          </div>
-        </div>
-
-        <!-- Food Item 5 -->
-        <div class="state-food-card">
-          <img src="https://images.unsplash.com/photo-1596797038530-2c107229654b?w=400&q=80" alt="Gujarati Kadhi">
-          <div class="state-food-content">
-            <span>SWEET &amp; SOUR</span>
-            <h3>Gujarati Kadhi</h3>
-            <p>A sweet and tangy yogurt-based soup cooked with gram flour, green chilies, ginger, and aromatic tempering.</p>
-          </div>
-        </div>
-
-      </div>
-      <button class="food-arrow right" onclick="stateFoodCarousel.right()">❯</button>
-    </div>
-  </div>
-
-  <!-- Culture Glimpses Slider Section -->
-  <div class="culture-slider-section">
-    <h1 class="slider-title">CULTURE GLIMPSES</h1>
-    <p class="slider-subtitle">Explore dance, food, craft &amp; heritage of Gujarat</p>
-
-    <div class="slider-outer">
-      <button class="arrow-btn left" onclick="stateCultureCarousel.left()">❮</button>
-      <div class="slider-track" id="cultureSlider">
-        
-        <!-- Card 1: Dance -->
-        <div class="culture-card">
-          <img src="../assets/images/gujarat-dance.png" alt="Garba Dance">
-          <div class="culture-info">
-            <span>DANCE</span>
-            <h3>Garba &amp; Dandiya</h3>
-            <p>Folk dances performed in circles during the nine nights of the Navratri festival.</p>
-          </div>
-        </div>
-
-        <!-- Card 2: Food -->
-        <div class="culture-card">
-          <img src="../assets/images/gujarat-food.png" alt="Gujarati Cuisine">
-          <div class="culture-info">
-            <span>CUISINE</span>
-            <h3>Traditional Flavors</h3>
-            <p>Flavorful sweet &amp; savory vegetarian meals served with fried green chilies and chutneys.</p>
-          </div>
-        </div>
-
-        <!-- Card 3: Landscape -->
-        <div class="culture-card">
-          <img src="../assets/images/gujarat-camel-safari.png" alt="Desert Safari">
-          <div class="culture-info">
-            <span>LANDSCAPE</span>
-            <h3>Rann Desert Safari</h3>
-            <p>Camel safaris across the vast white desert sands of Kutch under moonlit skies.</p>
-          </div>
-        </div>
-
-        <!-- Card 4: Heritage -->
-        <div class="culture-card">
-          <img src="../assets/images/gujarat-hawa-mahal.png" alt="Heritage">
-          <div class="culture-info">
-            <span>HERITAGE</span>
-            <h3>Intricate Monuments</h3>
-            <p>Stepwells, step towers and carvings representing ancient Indian structural design.</p>
-          </div>
-        </div>
-
-        <!-- Card 5: Festival -->
-        <div class="culture-card">
-          <img src="../assets/images/gujarat-culture.jpg" alt="Navratri Festival">
-          <div class="culture-info">
-            <span>FESTIVAL</span>
-            <h3>Navratri Lights</h3>
-            <p>A high-energy, colorful nine-night festival filled with devotional songs, traditional dress, and community.</p>
-          </div>
-        </div>
-
-        <!-- Card 6: Kite -->
-        <div class="culture-card">
-          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80" alt="Uttarayan Kites">
-          <div class="culture-info">
-            <span>FESTIVAL</span>
-            <h3>Uttarayan (Kite Festival)</h3>
-            <p>The International Kite Festival where millions of colorful kites fill the blue skies of Gujarat in January.</p>
-          </div>
-        </div>
-
-        <!-- Card 7: Lions -->
-        <div class="culture-card">
-          <img src="https://images.unsplash.com/photo-1588416499018-1d36b8b0dc18?w=400&q=80" alt="Asiatic Lions">
-          <div class="culture-info">
-            <span>WILDLIFE</span>
-            <h3>Gir Asiatic Lions</h3>
-            <p>The exclusive sanctuary preserving the majestic Asiatic Lion population in the dry deciduous Gir forest.</p>
-          </div>
-        </div>
-
-      </div>
-      <button class="arrow-btn right" onclick="stateCultureCarousel.right()">❯</button>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <p>🪷 ApniParampara | Course Project - Group 6</p>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="../js/slider.js"></script>
-  <script>
-    function updateMap(locationName, mapUrl, element) {
-      const iframe = document.getElementById('map-iframe');
-      iframe.src = `https://maps.google.com/maps?q=${encodeURIComponent(locationName)}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
-      
-      document.querySelectorAll('.spot-card-item').forEach(card => {
-        card.classList.remove('active');
-      });
-      element.classList.add('active');
-      
-      document.getElementById('active-spot-name').innerText = locationName;
-
-      // Open in Google Maps page in new tab
-      window.open(mapUrl, '_blank');
-    }
-
-    // Initialize sliders using the helper from slider.js
-    const stateFoodCarousel = createLoopingSlider("#stateFoodSlider", ".food-slider-wrapper", ".state-food-card");
-    const stateCultureCarousel = createLoopingSlider("#cultureSlider", ".slider-outer", ".culture-card");
-  </script>
 </body>
 </html>
