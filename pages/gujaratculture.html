@@ -73,6 +73,80 @@
         #map:hover{
             transform: scale(1.05);
         }
+
+        /* Tourist Slider Styles */
+        .tourist-slider-container {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto 0 auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .tourist-slider {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .tourist-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .tourist-slide img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .tourist-slide-content {
+            position: absolute;
+            bottom: 25px;
+            left: 25px;
+            right: 25px;
+            background: rgba(74, 44, 42, 0.85);
+            color: #fff7ec;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .tourist-slide-content h3 {
+            margin: 0 0 5px 0;
+            font-size: 20px;
+            color: #ff9933;
+        }
+
+        .tourist-slide-content p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .tourist-prev, .tourist-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(74, 44, 42, 0.7);
+            color: #fff7ec;
+            border: none;
+            font-size: 24px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+
+        .tourist-prev { left: 15px; }
+        .tourist-next { right: 15px; }
+
+        .tourist-prev:hover, .tourist-next:hover {
+            background: rgba(74, 44, 42, 0.95);
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -119,6 +193,62 @@
         Dwarka, Rann of Kutch, Sabarmati Ashram, Champaner-Pavagadh Archaeological Park,
         and Saputara Hill Station.
     </p>
+
+    <div class="tourist-slider-container">
+        <div class="tourist-slider" id="tourist-slider">
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1632766023249-14a51e60058b?auto=format&fit=crop&w=800&q=80" alt="Statue of Unity">
+                <div class="tourist-slide-content">
+                    <h3>Statue of Unity</h3>
+                    <p>The world's tallest statue at 182 meters, honoring visionary leader Sardar Vallabhbhai Patel.</p>
+                </div>
+            </div>
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1590766940554-634a7ed41450?auto=format&fit=crop&w=800&q=80" alt="Rann of Kutch">
+                <div class="tourist-slide-content">
+                    <h3>Rann of Kutch</h3>
+                    <p>A mesmerizing salt desert that sparkles white under the moon, famous for its cultural Rann Utsav.</p>
+                </div>
+            </div>
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=800&q=80" alt="Gir National Park">
+                <div class="tourist-slide-content">
+                    <h3>Gir National Park</h3>
+                    <p>The exclusive home and sanctuary of the rare Asiatic Lions in their natural forest habitat.</p>
+                </div>
+            </div>
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&w=800&q=80" alt="Somnath Temple">
+                <div class="tourist-slide-content">
+                    <h3>Somnath Temple</h3>
+                    <p>A holy shrine on the coast of the Arabian Sea, standing proud as the first among the twelve Jyotirlingas.</p>
+                </div>
+            </div>
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1605649487212-47bdab064df7?auto=format&fit=crop&w=800&q=80" alt="Dwarkadhish Temple">
+                <div class="tourist-slide-content">
+                    <h3>Dwarkadhish Temple</h3>
+                    <p>A 2200-year-old temple dedicated to Lord Krishna, resting beside the Gomti River in the ancient city of Dwarka.</p>
+                </div>
+            </div>
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1589308078059-be1415eab4c3?auto=format&fit=crop&w=800&q=80" alt="Sabarmati Ashram">
+                <div class="tourist-slide-content">
+                    <h3>Sabarmati Ashram</h3>
+                    <p>Mahatma Gandhi's peaceful historic residence where the Dandi Salt March originated.</p>
+                </div>
+            </div>
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=800&q=80" alt="Modhera Sun Temple">
+                <div class="tourist-slide-content">
+                    <h3>Modhera Sun Temple</h3>
+                    <p>An exquisite temple dedicated to the Sun God, displaying outstanding solar architecture and a grand stepped tank.</p>
+                </div>
+            </div>
+        </div>
+        <button class="tourist-prev" onclick="prevTouristSlide()">❮</button>
+        <button class="tourist-next" onclick="nextTouristSlide()">❯</button>
+    </div>
 </section>
 
 <section>
@@ -137,6 +267,41 @@
 <script>
 $(document).ready(function(){
     $("section").hide().fadeIn(2000);
+});
+
+let touristIndex = 0;
+const touristSlider = document.getElementById("tourist-slider");
+const touristSlides = document.querySelectorAll(".tourist-slide");
+const totalTouristSlides = touristSlides.length;
+
+function updateTouristSlider() {
+    touristSlider.style.transform = `translateX(-${touristIndex * 100}%)`;
+}
+
+function nextTouristSlide() {
+    touristIndex++;
+    if (touristIndex >= totalTouristSlides) {
+        touristIndex = 0;
+    }
+    updateTouristSlider();
+}
+
+function prevTouristSlide() {
+    touristIndex--;
+    if (touristIndex < 0) {
+        touristIndex = totalTouristSlides - 1;
+    }
+    updateTouristSlider();
+}
+
+let touristAutoSlide = setInterval(nextTouristSlide, 4000);
+
+const touristContainer = document.querySelector(".tourist-slider-container");
+touristContainer.addEventListener("mouseenter", () => {
+    clearInterval(touristAutoSlide);
+});
+touristContainer.addEventListener("mouseleave", () => {
+    touristAutoSlide = setInterval(nextTouristSlide, 4000);
 });
 </script>  
 

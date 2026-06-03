@@ -1,64 +1,99 @@
-const craftsSlider = document.getElementById("craftsSlider");
-let scrollAmount = 0;
+function createLoopingSlider(sliderSelector, containerSelector, cardSelector) {
+  const slider = document.querySelector(sliderSelector);
+  const container = document.querySelector(containerSelector);
+  const cards = Array.from(slider.querySelectorAll(cardSelector));
+  const cardCount = cards.length;
+  let index = cardCount;
+  let isMoving = false;
+  let autoSlide;
+
+  cards.forEach((card) => slider.appendChild(card.cloneNode(true)));
+  cards
+    .slice()
+    .reverse()
+    .forEach((card) => slider.insertBefore(card.cloneNode(true), slider.firstChild));
+
+  function getStep() {
+    const styles = getComputedStyle(slider);
+    const gap = parseFloat(styles.columnGap || styles.gap) || 0;
+
+    return cards[0].offsetWidth + gap;
+  }
+
+  function update(animate = true) {
+    slider.style.transition = animate ? "transform 0.6s ease" : "none";
+    slider.style.transform = `translateX(-${index * getStep()}px)`;
+  }
+
+  function move(direction) {
+    if (isMoving) return;
+
+    isMoving = true;
+    index += direction;
+    update();
+  }
+
+  function startAutoSlide() {
+    clearInterval(autoSlide);
+    autoSlide = setInterval(() => move(1), 3500);
+  }
+
+  slider.addEventListener("transitionend", () => {
+    if (index >= cardCount * 2) index -= cardCount;
+    if (index <= 0) index += cardCount;
+    update(false);
+    isMoving = false;
+  });
+
+  container.addEventListener("mouseenter", () => clearInterval(autoSlide));
+  container.addEventListener("mouseleave", startAutoSlide);
+  window.addEventListener("resize", () => update(false));
+
+  update(false);
+  startAutoSlide();
+
+  return {
+    left: () => move(-1),
+    right: () => move(1),
+  };
+}
+
+const craftsCarousel = createLoopingSlider(
+  "#craftsSlider",
+  ".crafts-slider-container",
+  ".craft-card"
+);
+const foodCarousel = createLoopingSlider(
+  "#foodSlider",
+  ".food-slider-wrapper",
+  ".food-card"
+);
+const festivalCarousel = createLoopingSlider(
+  "#festivalSlider",
+  ".festival-slider-wrapper",
+  ".festival-card"
+);
 
 function slideRight() {
-  scrollAmount += 325;
-  craftsSlider.style.transform = `translateX(-${scrollAmount}px)`;
+  craftsCarousel.right();
 }
 
 function slideLeft() {
-  scrollAmount -= 325;
-  if (scrollAmount < 0) scrollAmount = 0;
-  craftsSlider.style.transform = `translateX(-${scrollAmount}px)`;
+  craftsCarousel.left();
 }
 
-
-const foodSlider = document.getElementById("foodSlider");
-const cards = document.querySelectorAll(".food-card");
-
-let index = 1;
-const cardWidth = cards[0].offsetWidth + 25;
-
-/* Clone first & last cards */
-const firstClone = cards[0].cloneNode(true);
-const lastClone = cards[cards.length - 1].cloneNode(true);
-
-foodSlider.appendChild(firstClone);
-foodSlider.insertBefore(lastClone, cards[0]);
-
-foodSlider.style.transform = `translateX(-${cardWidth * index}px)`;
-
-/* Buttons */
 function foodSlideRight() {
-  if (index >= cards.length + 1) return;
-  index++;
-  foodSlider.style.transition = "transform 0.6s ease";
-  foodSlider.style.transform = `translateX(-${cardWidth * index}px)`;
+  foodCarousel.right();
 }
 
 function foodSlideLeft() {
-  if (index <= 0) return;
-  index--;
-  foodSlider.style.transition = "transform 0.6s ease";
-  foodSlider.style.transform = `translateX(-${cardWidth * index}px)`;
+  foodCarousel.left();
 }
 
-/* Loop fix */
-foodSlider.addEventListener("transitionend", () => {
-  const allCards = document.querySelectorAll(".food-card");
+function festivalSlideRight() {
+  festivalCarousel.right();
+}
 
-  if (allCards[index].isEqualNode(firstClone)) {
-    foodSlider.style.transition = "none";
-    index = 1;
-    foodSlider.style.transform = `translateX(-${cardWidth * index}px)`;
-  }
-
-  if (allCards[index].isEqualNode(lastClone)) {
-    foodSlider.style.transition = "none";
-    index = cards.length;
-    foodSlider.style.transform = `translateX(-${cardWidth * index}px)`;
-  }
-});
-
-/* Auto slide (looping) */
-setInterval(foodSlideRight, 3500);
+function festivalSlideLeft() {
+  festivalCarousel.left();
+}

@@ -39,8 +39,7 @@ ApniParampara/
 │
 ├── js/                         # JavaScript files
 │   ├── main.js                # Main interactive functionality
-│   ├── slider.js              # Carousel/slider functionality
-│   └── utils.js               # Utility functions
+│   └── slider.js              # Carousel/slider functionality
 │
 ├── pages/                      # Culture information pages
 │   ├── gujaratculture.html    # Gujarat cultural information

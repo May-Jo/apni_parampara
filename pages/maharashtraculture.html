@@ -66,6 +66,80 @@
             line-height: 1.6;
             margin-top: 20px;
         }
+
+        /* Tourist Slider Styles */
+        .tourist-slider-container {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto 0 auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .tourist-slider {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .tourist-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .tourist-slide img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .tourist-slide-content {
+            position: absolute;
+            bottom: 25px;
+            left: 25px;
+            right: 25px;
+            background: rgba(74, 44, 42, 0.85);
+            color: #fff7ec;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .tourist-slide-content h3 {
+            margin: 0 0 5px 0;
+            font-size: 20px;
+            color: #ff9933;
+        }
+
+        .tourist-slide-content p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .tourist-prev, .tourist-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(74, 44, 42, 0.7);
+            color: #fff7ec;
+            border: none;
+            font-size: 24px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+
+        .tourist-prev { left: 15px; }
+        .tourist-next { right: 15px; }
+
+        .tourist-prev:hover, .tourist-next:hover {
+            background: rgba(74, 44, 42, 0.95);
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -113,6 +187,62 @@
         Lonavala, Ajanta Caves, Ellora Caves, Shirdi, Gateway of India, and
         Raigad Fort. The state combines historical, cultural, and modern attractions.
     </p>
+
+    <div class="tourist-slider-container">
+        <div class="tourist-slider" id="tourist-slider">
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1566552881560-0be862a7c445?auto=format&fit=crop&w=800&q=80" alt="Gateway of India">
+                <div class="tourist-slide-content">
+                    <h3>Gateway of India</h3>
+                    <p>Majestic arch monument built during the 20th century in Mumbai, overlooking the Arabian Sea.</p>
+                </div>
+            </div>
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1608958416755-a2267fecbdfb?auto=format&fit=crop&w=800&q=80" alt="Ajanta Caves">
+                <div class="tourist-slide-content">
+                    <h3>Ajanta Caves</h3>
+                    <p>Ancient rock-cut Buddhist temple caves in Aurangabad district dating back to the 2nd century BCE.</p>
+                </div>
+            </div>
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=800&q=80" alt="Ellora Caves">
+                <div class="tourist-slide-content">
+                    <h3>Ellora Caves</h3>
+                    <p>Stunning rock-cut cave temple complex featuring the monumental Kailash Temple, a marvel of ancient Indian architecture.</p>
+                </div>
+            </div>
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1590050752117-238cb0612b1b?auto=format&fit=crop&w=800&q=80" alt="Mahabaleshwar">
+                <div class="tourist-slide-content">
+                    <h3>Mahabaleshwar</h3>
+                    <p>Scenic hill station nestled in the Western Ghats, famous for its strawberry farms, valleys, and pleasant climate.</p>
+                </div>
+            </div>
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1626583223726-b259a1bb244c?auto=format&fit=crop&w=800&q=80" alt="Lonavala">
+                <div class="tourist-slide-content">
+                    <h3>Lonavala</h3>
+                    <p>Popular weekend getaway known for its lush green hills, waterfalls, historical caves, and sweet chikki.</p>
+                </div>
+            </div>
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=800&q=80" alt="Raigad Fort">
+                <div class="tourist-slide-content">
+                    <h3>Raigad Fort</h3>
+                    <p>Historic hill fortress that served as the capital of Chhatrapati Shivaji Maharaj's Maratha Empire.</p>
+                </div>
+            </div>
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1600100397608-f010e42ed974?auto=format&fit=crop&w=800&q=80" alt="Shaniwar Wada">
+                <div class="tourist-slide-content">
+                    <h3>Shaniwar Wada</h3>
+                    <p>Historic fortification in Pune built by the Peshwas, representing Maratha heritage and architectural history.</p>
+                </div>
+            </div>
+        </div>
+        <button class="tourist-prev" onclick="prevTouristSlide()">❮</button>
+        <button class="tourist-next" onclick="nextTouristSlide()">❯</button>
+    </div>
 </section>
 
 <section>
@@ -129,6 +259,41 @@
 <script>
 $(document).ready(function(){
     $("section").hide().fadeIn(2000);
+});
+
+let touristIndex = 0;
+const touristSlider = document.getElementById("tourist-slider");
+const touristSlides = document.querySelectorAll(".tourist-slide");
+const totalTouristSlides = touristSlides.length;
+
+function updateTouristSlider() {
+    touristSlider.style.transform = `translateX(-${touristIndex * 100}%)`;
+}
+
+function nextTouristSlide() {
+    touristIndex++;
+    if (touristIndex >= totalTouristSlides) {
+        touristIndex = 0;
+    }
+    updateTouristSlider();
+}
+
+function prevTouristSlide() {
+    touristIndex--;
+    if (touristIndex < 0) {
+        touristIndex = totalTouristSlides - 1;
+    }
+    updateTouristSlider();
+}
+
+let touristAutoSlide = setInterval(nextTouristSlide, 4000);
+
+const touristContainer = document.querySelector(".tourist-slider-container");
+touristContainer.addEventListener("mouseenter", () => {
+    clearInterval(touristAutoSlide);
+});
+touristContainer.addEventListener("mouseleave", () => {
+    touristAutoSlide = setInterval(nextTouristSlide, 4000);
 });
 </script>  
 

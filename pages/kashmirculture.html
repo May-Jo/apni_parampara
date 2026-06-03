@@ -70,6 +70,80 @@
         #map:hover{
             transform: scale(1.05);
         }
+
+        /* Tourist Slider Styles */
+        .tourist-slider-container {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            margin: 30px auto 0 auto;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .tourist-slider {
+            display: flex;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .tourist-slide {
+            min-width: 100%;
+            position: relative;
+        }
+
+        .tourist-slide img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .tourist-slide-content {
+            position: absolute;
+            bottom: 25px;
+            left: 25px;
+            right: 25px;
+            background: rgba(74, 44, 42, 0.85);
+            color: #fff7ec;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        .tourist-slide-content h3 {
+            margin: 0 0 5px 0;
+            font-size: 20px;
+            color: #ff9933;
+        }
+
+        .tourist-slide-content p {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .tourist-prev, .tourist-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(74, 44, 42, 0.7);
+            color: #fff7ec;
+            border: none;
+            font-size: 24px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+
+        .tourist-prev { left: 15px; }
+        .tourist-next { right: 15px; }
+
+        .tourist-prev:hover, .tourist-next:hover {
+            background: rgba(74, 44, 42, 0.95);
+        }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -99,7 +173,7 @@
          Known as "Paradise on Earth"<br>   
          Famous for apples, saffron, Pashmina shawls, and handicrafts<br>   
          Major Languages: Kashmiri, Dogri, Urdu, Hindi, and English     
-    </p>
+     </p>
 </section>
 
 <section>
@@ -120,6 +194,62 @@
         Mughal Gardens, and Betaab Valley. These places attract millions of
         visitors every year with their scenic beauty and spiritual significance.
     </p>
+
+    <div class="tourist-slider-container">
+        <div class="tourist-slider" id="tourist-slider">
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1566228015668-4c45dbc4e2f5?auto=format&fit=crop&w=800&q=80" alt="Dal Lake">
+                <div class="tourist-slide-content">
+                    <h3>Dal Lake (Srinagar)</h3>
+                    <p>The legendary "Jewel in the crown of Kashmir," famous for its beautiful houseboats and wooden Shikara rides.</p>
+                </div>
+            </div>
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1589882260837-142c676d1e43?auto=format&fit=crop&w=800&q=80" alt="Gulmarg">
+                <div class="tourist-slide-content">
+                    <h3>Gulmarg</h3>
+                    <p>A spectacular high-altitude valley famous for wild flowers, deep winter snow, and the Gondola cable car.</p>
+                </div>
+            </div>
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=800&q=80" alt="Pahalgam">
+                <div class="tourist-slide-content">
+                    <h3>Pahalgam</h3>
+                    <p>A beautiful pristine valley situated on the banks of the Lidder River, popular for trekking and angling.</p>
+                </div>
+            </div>
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1614082242765-7c99bc00902f?auto=format&fit=crop&w=800&q=80" alt="Sonmarg">
+                <div class="tourist-slide-content">
+                    <h3>Sonmarg</h3>
+                    <p>Known as the "Meadow of Gold," it serves as the gateway to ancient Silk Road routes and spectacular glaciers.</p>
+                </div>
+            </div>
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1542856391-010fb87dcfed?auto=format&fit=crop&w=800&q=80" alt="Vaishno Devi Temple">
+                <div class="tourist-slide-content">
+                    <h3>Vaishno Devi Temple</h3>
+                    <p>A sacred mountain shrine located at Katra, visited by millions of devoted pilgrims every year.</p>
+                </div>
+            </div>
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=800&q=80" alt="Mughal Gardens">
+                <div class="tourist-slide-content">
+                    <h3>Mughal Gardens</h3>
+                    <p>Historic terraced pleasure gardens built by the Mughal Emperors, showcasing fountains and chinar trees.</p>
+                </div>
+            </div>
+            <div class="tourist-slide">
+                <img src="https://images.unsplash.com/photo-1601919051950-bb9f3ff27fee?auto=format&fit=crop&w=800&q=80" alt="Betaab Valley">
+                <div class="tourist-slide-content">
+                    <h3>Betaab Valley</h3>
+                    <p>A stunning, lush green valley surrounded by snow-draped peak views and thick forests of pine and deodar.</p>
+                </div>
+            </div>
+        </div>
+        <button class="tourist-prev" onclick="prevTouristSlide()">❮</button>
+        <button class="tourist-next" onclick="nextTouristSlide()">❯</button>
+    </div>
 </section>
 
 <section>
@@ -143,6 +273,41 @@
 <script>
 $(document).ready(function(){
     $("section").hide().fadeIn(2000);
+});
+
+let touristIndex = 0;
+const touristSlider = document.getElementById("tourist-slider");
+const touristSlides = document.querySelectorAll(".tourist-slide");
+const totalTouristSlides = touristSlides.length;
+
+function updateTouristSlider() {
+    touristSlider.style.transform = `translateX(-${touristIndex * 100}%)`;
+}
+
+function nextTouristSlide() {
+    touristIndex++;
+    if (touristIndex >= totalTouristSlides) {
+        touristIndex = 0;
+    }
+    updateTouristSlider();
+}
+
+function prevTouristSlide() {
+    touristIndex--;
+    if (touristIndex < 0) {
+        touristIndex = totalTouristSlides - 1;
+    }
+    updateTouristSlider();
+}
+
+let touristAutoSlide = setInterval(nextTouristSlide, 4000);
+
+const touristContainer = document.querySelector(".tourist-slider-container");
+touristContainer.addEventListener("mouseenter", () => {
+    clearInterval(touristAutoSlide);
+});
+touristContainer.addEventListener("mouseleave", () => {
+    touristAutoSlide = setInterval(nextTouristSlide, 4000);
 });
 </script>
 
